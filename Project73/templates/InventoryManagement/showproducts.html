@@ -1,0 +1,41 @@
+{% extends 'InventoryManagement/base.html' %}
+
+
+ {% block block1 %}
+    <title>Product list</title>
+    {% endblock %}
+
+
+
+ {% block block2 %}
+<h1 style="text-align:center">Current Inventory</h1>
+<table border="5px" class="table table-dark">
+
+    <tr>
+        <th>Date</th>
+        <th>Provider</th>
+        <th>Name of Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Amount</th>
+        <th>Stock</th>
+        <th>Update Product</th>
+        <th>Delete Product</th>
+
+    </tr>
+    {% for product in all_products %}
+    <tr>
+        <td>{{product.Date}}</td>
+         <td>{{product.Provider}}</td>
+         <td>{{product.Name_of_product}}</td>
+         <td>{{product.Price}}</td>
+         <td>{{product.Quantity}}</td>
+         <td>{{product.Amount}}</td>
+         <td>{{product.Stock}}</td>
+        <td><a href="{% url 'update' product.id %}"><button class="btn btn-primary">Update</button></a></td>
+        <td><a href="{% url 'delete' product.id %}"><button class="btn btn-danger">Delete</button></a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+ {% endblock %}
